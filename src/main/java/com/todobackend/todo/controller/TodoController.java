@@ -73,6 +73,7 @@ public class TodoController {
 
     @GetMapping
     public ResponseEntity<?> retrieveTodoList(@AuthenticationPrincipal String userId) {
+        log.info(userId);
 //        String temporaryUserId = "temporary-user"; //임시 유저
 
         //1. 서비스 메서드를 호출(retrieve 메서드를 호출)
@@ -84,6 +85,7 @@ public class TodoController {
         //3. 변환된 TodoDTO 리스트를 이용하여 ResponseDTO 초기화
         ResponseDTO<TodoDTO> response = ResponseDTO.<TodoDTO>builder().data(dtos).build();
 
+        log.info(response);
         //4. ResponseDTO를 리턴
         return ResponseEntity.ok().body(response);
 
